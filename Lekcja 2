@@ -1,1 +1,12 @@
-DELETE FROM postac WHERE rodzaj='wiking' ORDER BY wiek DESC LIMIT 2;
+#Zadanie 1
+DELETE FROM postac WHERE rodzaj='wiking' AND nazwa NOT LIKE 'Bjorn' ORDER BY wiek DESC LIMIT 2;
+
+ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_1;
+ALTER TABLE przetwory DROP FOREIGN KEY przetwory_ibfk_2;
+ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1;
+
+ ALTER TABLE postac DROP PRIMARY KEY,MODIFY id_postaci  INT;
+
+#Zadanie 2
+
+ALTER TABLE postac ADD COLUMN pesel INT(11) NOT NULL;
