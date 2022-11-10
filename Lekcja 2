@@ -1,0 +1,1 @@
+DELETE FROM postac WHERE rodzaj='wiking' ORDER BY wiek DESC LIMIT 2;
