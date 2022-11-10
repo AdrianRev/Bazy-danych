@@ -31,3 +31,10 @@ CREATE TABLE statek(nazwa VARCHAR (20) PRIMARY KEY,rodzaj ENUM('Drakkar','Knara'
 INSERT INTO statek VALUES('statek1','Drakkar','2012-02-13',45);
 INSERT INTO statek VALUES('statek2','Sneka','2016-06-27',45);
 
+UPDATE postac SET funkcja='kapitan' WHERE nazwa LIKE 'Bjorn';
+ ALTER TABLE postac ADD COLUMN nazwa_statku VARCHAR(20),ADD FOREIGN KEY(nazwa_statku)REFERENCES statek(nazwa);
+UPDATE postac SET nazwa_statku='statek1' WHERE nazwa LIKE('Drozd');
+ UPDATE postac SET nazwa_statku='statek2' WHERE rodzaj LIKE ('wiking');
+ DELETE FROM izba WHERE nazwa_izby='spizarnia';
+ DROP TABLE izba;
+
