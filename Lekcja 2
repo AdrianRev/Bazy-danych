@@ -32,8 +32,12 @@ INSERT INTO postac VALUES(10,'Loko','waz','2013-07-07',9,NULL,NULL,89024389034);
   CREATE TABLE marynarz LIKE postac;
    ALTER TABLE marynarz RENAME COLUMN id_postaci TO id_marynarza;
    INSERT INTO marynarz SELECT * FROM postac WHERE nazwa_statku IS NOT NULL;
+ALTER TABLE marynarz ADD FOREIGN KEY(pesel)REFERENCES postac(pesel)ON DELETE CASCADE;
 #Zadanie 5
- SELECT * from marynarz;
+ UPDATE marynarz SET nazwa_statku=NULL;
+ DELETE FROM postac WHERE nazwa='Haki';
+ DELETE FROM statek;
+
 
 
 
