@@ -9,4 +9,16 @@ ALTER TABLE walizka DROP FOREIGN KEY walizka_ibfk_1;
 
 #Zadanie 2
 
-ALTER TABLE postac ADD COLUMN pesel INT(11) NOT NULL;
+ALTER TABLE postac ADD COLUMN pesel CHAR(11)NOT NULL UNIQUE;
+ UPDATE postac SET pesel=12345678901 WHERE id_postaci=1;
+ UPDATE postac SET pesel=12345128901 WHERE id_postaci=2;
+ UPDATE postac SET pesel=64345128901 WHERE id_postaci=3;
+ UPDATE postac SET pesel=68495128901 WHERE id_postaci=5;
+ UPDATE postac SET pesel=68478128901 WHERE id_postaci=7;
+ UPDATE postac SET pesel=68478121101 WHERE id_postaci=8;
+ ALTER TABLE postac ADD PRIMARY KEY pesel;
+ALTER TABLE postac MODIFY rodzaj ENUM('wiking','kobieta','ptak','syrena');
+INSERT INTO postac VALUES(9,'Gertruda Nieszczera','syrena','1100-01-01',922,NULL,NULL,23435432412);
+
+#Zadanie 3
+ UPDATE postac SET nazwa_statku='statek2' WHERE nazwa LIKE '%a%';
