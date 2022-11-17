@@ -21,4 +21,10 @@ ALTER TABLE postac MODIFY rodzaj ENUM('wiking','kobieta','ptak','syrena');
 INSERT INTO postac VALUES(9,'Gertruda Nieszczera','syrena','1100-01-01',922,NULL,NULL,23435432412);
 
 #Zadanie 3
- UPDATE postac SET nazwa_statku='statek2' WHERE nazwa LIKE '%a%';
+UPDATE postac SET nazwa_statku='statek2' WHERE nazwa LIKE '%a%';
+UPDATE statek SET max_ladownosc=max_ladownosc*0.7;
+ALTER TABLE postac ADD CONSTRAINT sprawdz_wiek CHECK(wiek<1000);
+
+#Zadanie 4
+
+
