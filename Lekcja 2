@@ -27,7 +27,14 @@ UPDATE statek SET max_ladownosc=max_ladownosc*0.7
     -> AND data_wodowania<='1999-12-31';
 ALTER TABLE postac ADD CONSTRAINT sprawdz_wiek CHECK(wiek<1000);
 #Zadanie 4
- ALTER TABLE postac MODIFY rodzaj ENUM('wiking','kobieta','ptak','syrena','waz');
+ALTER TABLE postac MODIFY rodzaj ENUM('wiking','kobieta','ptak','syrena','waz');
+INSERT INTO postac VALUES(10,'Loko','waz','2013-07-07',9,NULL,NULL,89024389034);
+  CREATE TABLE marynarz LIKE postac;
+   ALTER TABLE marynarz RENAME COLUMN id_postaci TO id_marynarza;
+   INSERT INTO marynarz SELECT * FROM postac WHERE nazwa_statku IS NOT NULL;
+#Zadanie 5
+ SELECT * from marynarz;
+
 
 
 
