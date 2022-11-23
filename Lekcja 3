@@ -1,0 +1,21 @@
+#Zadanie 1
+CREATE TABLE kreatura AS SELECT * FROM wikingowie.kreatura;
+CREATE TABLE zasob AS SELECT * FROM wikingowie.zasob;
+CREATE TABLE ekwipunek  AS SELECT * FROM wikingowie.ekwipunek;
+
+SELECT * FROM zasob;
+SELECT * FROM zasob
+    -> WHERE rodzaj='jedzenie';
+ SELECT idZasobu,ilosc FROM zasob WHERE idZasobu IN(1,3,5);
+SELECT * FROM kreatura
+    -> WHERE NOT rodzaj='wiedzma'
+    -> AND waga>=50;
+    
+SELECT * FROM kreatura 
+    -> WHERE waga>2 AND waga<5;
+
+SELECT * FROM kreatura
+    -> WHERE udzwig>30 AND udzwig<70
+    -> AND nazwa LIKE '%or%';
+
+ SELECT * FROM zasob WHERE MONTH(dataPozyskania)IN(7,8);
