@@ -37,7 +37,10 @@ ALTER TABLE marynarz ADD FOREIGN KEY(pesel)REFERENCES postac(pesel)ON DELETE CAS
  UPDATE marynarz SET nazwa_statku=NULL;
  DELETE FROM postac WHERE nazwa='Haki';
  DELETE FROM statek;
-
+ALTER TABLE postac DROP FOREIGN KEY postac_ibfk_1;
+DROP TABLE statek;
+ CREATE TABLE zwierz(id_zwierza INT AUTO_INCREMENT PRIMARY KEY,nazwa VARCHAR(20),wiek INT);
+ INSERT INTO zwierz(nazwa,wiek) SELECT nazwa,wiek FROM postac WHERE rodzaj='ptak' OR rodzaj='waz';
 
 
 
