@@ -26,3 +26,11 @@ SELECT * FROM zasob WHERE rodzaj IS NOT NULL ORDER BY waga ASC;
 
  SELECT CONCAT(nazwa,' ',rodzaj)FROM kreatura WHERE rodzaj LIKE 'wi%';
 SELECT *, waga * ilosc AS calkowitaWaga FROM zasob WHERE YEAR(dataPozyskania) BETWEEN 2000 AND 2007;
+
+#Zadanie5
+SELECT nazwa,waga*0.7 AS masaWlasciwa,waga*0.3 AS wagaOdpadkow FROM zasob WHERE rodzaj='jedzenie';
+
+ SELECT * FROM zasob WHERE rodzaj IS NULL;
+
+ SELECT DISTINCT rodzaj FROM zasob WHERE nazwa LIKE 'Ba%' OR '$os' ORDER BY rodzaj ASC;
+
