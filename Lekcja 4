@@ -5,6 +5,6 @@ SELECT rodzaj,AVG(2022-YEAR(dataUr))AS sredni_wiek FROM kreatura GROUP BY rodzaj
 
 #Zadanie 2
 SELECT rodzaj,SUM(waga)AS 'suma wag' FROM zasob GROUP BY rodzaj;
- SELECT nazwa,AVG(waga)as 'srednia waga' FROM zasob  WHERE ilosc>=4  GROUP BY nazwa HAVING AVG(waga)>10;
+ SELECT nazwa,AVG(waga)as 'srednia waga' FROM zasob  WHERE ilosc>=4  GROUP BY nazwa HAVING SUM(waga)>10;
  SELECT nazwa,COUNT(distinct nazwa) FROM zasob GROUP BY nazwa HAVING MIN(ilosc)>1;
 
