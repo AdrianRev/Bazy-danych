@@ -16,7 +16,7 @@ ALTER TABLE postac ADD COLUMN pesel CHAR(11)NOT NULL UNIQUE;
  UPDATE postac SET pesel=68495128901 WHERE id_postaci=5;
  UPDATE postac SET pesel=68478128901 WHERE id_postaci=7;
  UPDATE postac SET pesel=68478121101 WHERE id_postaci=8;
- ALTER TABLE postac ADD PRIMARY KEY pesel;
+ ALTER TABLE postac ADD PRIMARY KEY (pesel);
 ALTER TABLE postac MODIFY rodzaj ENUM('wiking','kobieta','ptak','syrena');
 INSERT INTO postac VALUES(9,'Gertruda Nieszczera','syrena','1100-01-01',922,NULL,NULL,23435432412);
 
