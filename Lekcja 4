@@ -6,5 +6,14 @@ SELECT rodzaj,AVG(2022-YEAR(dataUr))AS sredni_wiek FROM kreatura GROUP BY rodzaj
 #Zadanie 2
 SELECT rodzaj,SUM(waga)AS 'suma wag' FROM zasob GROUP BY rodzaj;
  SELECT nazwa,AVG(waga)as 'srednia waga' FROM zasob  WHERE ilosc>=4  GROUP BY nazwa HAVING SUM(waga)>10;
- SELECT nazwa,COUNT(distinct nazwa) FROM zasob GROUP BY nazwa HAVING MIN(ilosc)>1;
+ SELECT rodzaj,COUNT(distinct nazwa) FROM zasob GROUP BY rodzaj HAVING MIN(ilosc)>1;
+ //lub
+ SELECT rodzaj,COUNT(distinct nazwa) FROM zasob WHERE ilosc>1 GROUP BY rodzaj;
+
+#Zadanie 3
+SELECT kreatura.nazwa,SUM(ekwipunek.ilosc) FROM kreatura INNER JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury GROUP BY kreatura.idKreatury;
+SELECT kreatura.nazwa, GROUP_CONCAT(DISTINCT zasob.nazwa) AS zasoby FROM kreatura JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury JOIN zasob ON zasob.idZasobu = ekwipunek.idZasobu GROUP BY kreatura.nazwa;
+SELECT nazwa FROM kreatura LEFT JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury WHERE ekwipunek.idKreatury IS NULL;
+
+
 
