@@ -15,5 +15,8 @@ SELECT kreatura.nazwa,SUM(ekwipunek.ilosc) FROM kreatura INNER JOIN ekwipunek ON
 SELECT kreatura.nazwa, GROUP_CONCAT(DISTINCT zasob.nazwa) AS zasoby FROM kreatura JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury JOIN zasob ON zasob.idZasobu = ekwipunek.idZasobu GROUP BY kreatura.nazwa;
 SELECT nazwa FROM kreatura LEFT JOIN ekwipunek ON kreatura.idKreatury = ekwipunek.idKreatury WHERE ekwipunek.idKreatury IS NULL;
 
+#Zadanie 4
+SELECT kreatura.nazwa,GROUP_CONCAT(zasob.nazwa) FROM kreatura JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury JOIN zasob ON ekwipunek.idZasobu=zasob.idZasobu WHERE YEAR(dataUr)BETWEEN 1670 AND 1679 GROUP BY kreatura.nazwa;
+
 
 
