@@ -20,5 +20,6 @@ SELECT kreatura.nazwa,GROUP_CONCAT(zasob.nazwa) FROM kreatura JOIN ekwipunek ON 
 SELECT kreatura.nazwa FROM kreatura JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury JOIN zasob ON ekwipunek.idZasobu=zasob.idZasobu WHERE zasob.rodzaj LIKE'jedzenie' ORDER BY kreatura.dataUr DESC LIMIT 5;
 SELECT CONCAT(A.nazwa,'-',B.nazwa)FROM kreatura A,kreatura B WHERE A.idKreatury=B.idKreatury-5;
 
-
+#Zadanie 5
+SELECT kreatura.rodzaj,AVG(zasob.waga) FROM kreatura JOIN ekwipunek ON kreatura.idKreatury=ekwipunek.idKreatury JOIN zasob ON ekwipunek.idZasobu=zasob.idZasobu WHERE kreatura.rodzaj NOT LIKE 'malpa' OR 'waz' AND zasob.ilosc<30 GROUP BY rodzaj;
 
