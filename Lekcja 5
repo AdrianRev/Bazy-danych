@@ -13,3 +13,6 @@ SELECT wyprawa.nazwa,COUNT(kreatura.idKreatury)AS ilosc_uczestnikow,GROUP_CONCAT
 
 SELECT etapy_wyprawy.dziennik AS etap,sektor.nazwa AS nazwa_sektoru,kreatura.nazwa AS nazwa_kierownika FROM etapy_wyprawy JOIN sektor ON etapy_wyprawy.sektor=sektor.id_sektora JOIN wyprawa ON etapy_wyprawy.idWyprawy=wyprawa.id_wyprawy JOIN kreatura ON wyprawa.kierownik=kreatura.idKreatury ORDER BY wyprawa.data_rozpoczecia,etapy_wyprawy.kolejnosc;
 
+#Zadanie 3
+SELECT sektor.nazwa AS nazwa_sektora,COUNT(etapy_wyprawy.sektor)AS ilosc_odwiedzin FROM sektor LEFT JOIN etapy_wyprawy ON sektor.id_sektora=etapy_wyprawy.sektor GROUP BY sektor.nazwa;
+
