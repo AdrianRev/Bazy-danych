@@ -16,3 +16,5 @@ SELECT etapy_wyprawy.dziennik AS etap,sektor.nazwa AS nazwa_sektoru,kreatura.naz
 #Zadanie 3
 SELECT sektor.nazwa AS nazwa_sektora,COUNT(etapy_wyprawy.sektor)AS ilosc_odwiedzin FROM sektor LEFT JOIN etapy_wyprawy ON sektor.id_sektora=etapy_wyprawy.sektor GROUP BY sektor.nazwa;
 
+#Zadanie 4
+SELECT wyprawa.nazwa, SUM(LENGTH(etapy_wyprawy.dziennik))AS ilosc_znakow_we_wpisach FROM wyprawa JOIN etapy_wyprawy ON wyprawa.id_wyprawy=etapy_wyprawy.idWyprawy GROUP BY wyprawa.id_wyprawy HAVING SUM(LENGTH(etapy_wyprawy.dziennik))<400;
