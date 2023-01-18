@@ -17,7 +17,7 @@ ALTER TABLE izba ADD COLUMN color ENUM ('niebieski','czerwony','czarny')DEFAULT 
  INSERT INTO izba VALUES('ul.sezamkowa 12','spizarnia',4,1,'niebieski');
  
 #zadanie 4
-CREATE TABLE przetwory(id_przetworu INT PRIMARY KEY,rok_produkcji YEAR DEFAULT 1985,id_wykonawcy INT, FOREIGN KEY(id_wykonawcy)REFERENCES postac(id_postaci),zawartosc VARCHAR(40),dodatek VARCHAR (20) DEFAULT 'papryczka chilli',id_konsumenta INT, FOREIGN KEY(id_konsumenta)REFERENCES postac(id_postaci));INS
+CREATE TABLE przetwory(id_przetworu INT PRIMARY KEY,rok_produkcji YEAR DEFAULT 1985,id_wykonawcy INT, FOREIGN KEY(id_wykonawcy)REFERENCES postac(id_postaci),zawartosc VARCHAR(40),dodatek VARCHAR (20) DEFAULT 'papryczka chilli',id_konsumenta INT, FOREIGN KEY(id_konsumenta)REFERENCES postac(id_postaci));
 INSERT INTO przetwory VALUES(1,'2010',1,'czosnek,kielbasa,kiszona kapusta',DEFAULT,3);
 
 #zadanie 5
