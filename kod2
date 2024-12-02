@@ -1,0 +1,73 @@
+if (decyzja == 'J' || decyzja == 'j')
+			{
+				bool shouldBreak = false;
+				int rotation = 1;
+				int distance = NXT::Sensor::GetSonarValue(&comm, IN_1);
+				int scan_counter = 0;
+				do
+				{
+					if (rotation == 1)
+					{
+						NXT::Motor::SetReverse(&comm, OUT_B, y);
+						NXT::Motor::SetForward(&comm, OUT_C, y);
+					}
+					else
+					{
+						NXT::Motor::SetForward(&comm, OUT_B, y);
+						NXT::Motor::SetReverse(&comm, OUT_C, y);
+					}
+
+					do
+					{
+						distance = NXT::Sensor::GetSonarValue(&comm, IN_1);
+						scan_counter++;
+						if (scan_counter == 500)
+						{
+							rotation *= -1;
+							scan_counter = 0;
+							if (rotation == 1)
+							{
+								NXT::Motor::SetReverse(&comm, OUT_B, y);
+								NXT::Motor::SetForward(&comm, OUT_C, y);
+							}
+							else
+							{
+								NXT::Motor::SetForward(&comm, OUT_B, y);
+								NXT::Motor::SetReverse(&comm, OUT_C, y);
+							}
+						}
+
+						if (kbhit() == true)
+						{
+							shouldBreak = true;
+							decyzja = getch();
+							break;
+						}
+
+					} while (distance >= 46);
+					NXT::Motor::SetForward(&comm, OUT_B, x);
+					NXT::Motor::SetForward(&comm, OUT_C, x);
+					color = NXT::Sensor::GetValue(&comm, IN_2);
+					while (color >= 20)
+					{
+						if (kbhit() == true)
+						{
+							shouldBreak = true;
+							decyzja = getch();
+							break;
+						}
+						color = NXT::Sensor::GetValue(&comm, IN_2);
+
+					}
+					NXT::Motor::SetForward(&comm, OUT_B, 0);
+					NXT::Motor::SetForward(&comm, OUT_C, 0);
+					NXT::Motor::Stop(&comm, OUT_B, 0);
+					NXT::Motor::Stop(&comm, OUT_C, 0);
+					if (kbhit() == true)
+					{
+						shouldBreak = true;
+						decyzja = getch();
+					}
+				} while (shouldBreak == false);
+				
+			}
