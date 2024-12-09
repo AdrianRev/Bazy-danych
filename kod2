@@ -16,12 +16,12 @@ if (decyzja == 'J' || decyzja == 'j')
 						NXT::Motor::SetForward(&comm, OUT_B, y);
 						NXT::Motor::SetReverse(&comm, OUT_C, y);
 					}
-
 					do
 					{
+						Wait(20);
 						distance = NXT::Sensor::GetSonarValue(&comm, IN_1);
 						scan_counter++;
-						if (scan_counter == 500)
+						if (scan_counter == 250)
 						{
 							rotation *= -1;
 							scan_counter = 0;
@@ -44,11 +44,11 @@ if (decyzja == 'J' || decyzja == 'j')
 							break;
 						}
 
-					} while (distance >= 46);
+					} while (distance >= 51);
 					NXT::Motor::SetForward(&comm, OUT_B, x);
 					NXT::Motor::SetForward(&comm, OUT_C, x);
 					color = NXT::Sensor::GetValue(&comm, IN_2);
-					while (color >= 20)
+					while (color >= 25)
 					{
 						if (kbhit() == true)
 						{
@@ -56,13 +56,27 @@ if (decyzja == 'J' || decyzja == 'j')
 							decyzja = getch();
 							break;
 						}
-						color = NXT::Sensor::GetValue(&comm, IN_2);
+						else
+						{
+							color = NXT::Sensor::GetValue(&comm, IN_2);
+						}	
 
 					}
-					NXT::Motor::SetForward(&comm, OUT_B, 0);
-					NXT::Motor::SetForward(&comm, OUT_C, 0);
-					NXT::Motor::Stop(&comm, OUT_B, 0);
-					NXT::Motor::Stop(&comm, OUT_C, 0);
+					Wait(100);
+					bool has_already_checeked = false;
+					if (has_already_checeked == true)
+					{
+						NXT::Motor::SetForward(&comm, OUT_B, 0);
+						NXT::Motor::SetForward(&comm, OUT_C, 0);
+						NXT::Motor::Stop(&comm, OUT_B, 0);
+						NXT::Motor::Stop(&comm, OUT_C, 0);
+						shouldBreak = true;
+						break;
+					}
+					NXT::Motor::SetReverse(&comm, OUT_B, x);
+					NXT::Motor::SetReverse(&comm, OUT_C, x);
+					Wait(2000);
+					has_already_checeked = true;
 					if (kbhit() == true)
 					{
 						shouldBreak = true;
