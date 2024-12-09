@@ -1,5 +1,6 @@
 if (decyzja == 'J' || decyzja == 'j')
 			{
+				bool has_already_checeked = false;
 				bool shouldBreak = false;
 				int rotation = 1;
 				int distance = NXT::Sensor::GetSonarValue(&comm, IN_1);
@@ -45,6 +46,7 @@ if (decyzja == 'J' || decyzja == 'j')
 						}
 
 					} while (distance >= 51);
+					Wait(100);
 					NXT::Motor::SetForward(&comm, OUT_B, x);
 					NXT::Motor::SetForward(&comm, OUT_C, x);
 					color = NXT::Sensor::GetValue(&comm, IN_2);
@@ -62,8 +64,6 @@ if (decyzja == 'J' || decyzja == 'j')
 						}	
 
 					}
-					Wait(100);
-					bool has_already_checeked = false;
 					if (has_already_checeked == true)
 					{
 						NXT::Motor::SetForward(&comm, OUT_B, 0);
@@ -75,7 +75,7 @@ if (decyzja == 'J' || decyzja == 'j')
 					}
 					NXT::Motor::SetReverse(&comm, OUT_B, x);
 					NXT::Motor::SetReverse(&comm, OUT_C, x);
-					Wait(2000);
+					Wait(4000);
 					has_already_checeked = true;
 					if (kbhit() == true)
 					{
